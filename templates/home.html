@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% set active_page = "home" %}
+{% block title %} Home Page - {% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-lg-3">
+		<div class="my-4">
+			<h1>Filters</h1>
+		</div>
+	</div>
+	{% for data in product %}
+	<div class="col-lg-9">
+		<div class="row my-5 card-wrapper">
+			<div class="col-lg-4 col-md-6 mb-4">
+				<div class="card h-100">
+					<img src="{{ url_for('static', filename='images/python.jpg' )}}" alt="NEW" style="width: 100%;">
+					<div class="card-body">
+						<h4 class="card-title"><b>Title: </b>{{ data.title }}</h4>
+						<h5><b>Price: </b>${{ data.price }}</h5>
+						<!-- <p class="card-text">{{ data.description }}</p> -->
+					</div>
+					<div class="card-footer">
+						<small class="text-muted"><b>Description: </b>{{ data.description }}</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
